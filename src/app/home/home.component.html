@@ -155,15 +155,13 @@
       <div class="card">
         <div class="card-header">Resources</div>
         <div class="card-block">
-          <p class="card-text">3 in total.</p>
+          <p class="card-text">{{ io.resources.length }} in total.</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item clearfix">Unity <button type="button" class="btn btn-secondary btn-sm float-xs-right"><i class="fa fa-play" aria-hidden="true"></i></button></li>
-          <li class="list-group-item clearfix">Unity2 <button type="button" class="btn btn-secondary btn-sm float-xs-right"><i class="fa fa-play" aria-hidden="true"></i></button></li>
-          <li class="list-group-item clearfix">Unity3 <button type="button" class="btn btn-secondary btn-sm float-xs-right"><i class="fa fa-play" aria-hidden="true"></i></button></li>
+          <li class="list-group-item clearfix" *ngFor="let resource of io.resources">{{ resource.name }} <button type="button" class="btn btn-secondary btn-sm float-xs-right"><i class="fa fa-play" aria-hidden="true"></i></button></li>
         </ul>
         <div class="card-block">
-          <p class="card-text">3 in total.</p>
+          <p class="card-text">Resources recved.</p>
         </div>
       </div>
     </div>

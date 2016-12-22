@@ -20,7 +20,7 @@
     "test-watch": "karma start --no-single-run --auto-watch",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
-    "start": "npm run server",
+    "start": "webpack-dev-server --inline --watch-poll --port 8080",
     "start:hmr": "npm run server -- --hot",
     "postinstall": "npm run webdriver-update"
   },

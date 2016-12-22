@@ -10,8 +10,6 @@ import 'rxjs';
 import '@angularclass/hmr';
 
 import 'socket.io-client';
-import 'ng2-redux';
-import 'redux';
 
 import 'bootstrap/dist/css/bootstrap-flex.css';
 import 'font-awesome/css/font-awesome.css';

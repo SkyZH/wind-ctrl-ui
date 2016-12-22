@@ -2,14 +2,11 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { NgReduxModule, NgRedux } from 'ng2-redux';
-import reduxLogger from 'redux-logger';
-import { rootReducer, IAppState } from './shared';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ApiService } from './shared';
-import { IO_SERVICE_PROVIDER } from './shared';
+import { IOService } from './shared';
 
 import { routing } from './app.routing';
 
@@ -20,8 +17,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing,
-    NgReduxModule.forRoot()
+    routing
   ],
   declarations: [
     AppComponent,
@@ -29,13 +25,12 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
   ],
   providers: [
     ApiService,
-    IO_SERVICE_PROVIDER
+    IOService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef, ngRedux: NgRedux<IAppState>) {
-    ngRedux.configureStore(rootReducer, {}, [ createLogger() ]);
+  constructor(public appRef: ApplicationRef) {
   }
   hmrOnInit(store) {
     console.log('HMR store', store);

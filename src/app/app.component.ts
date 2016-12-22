@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from './shared';
+import { IOService, ApiService } from './shared';
 
 import '../style/app.scss';
 
@@ -9,10 +9,12 @@ import '../style/app.scss';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  url = 'https://github.com/preboot/angular2-webpack';
+export class AppComponent implements OnInit {
+  
+  constructor(private io: IOService, private api: ApiService) {
 
-  constructor(private api: ApiService) {
-    // Do something with api
+  }
+  ngOnInit() {
+    this.io.initialize();
   }
 }
