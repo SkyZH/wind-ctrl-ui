@@ -7,12 +7,38 @@ import { Resource } from '../models';
 export class ApiService {
   title = 'Wind Controller';
   public baseUrl = '//localhost:3000/api';
+  public wsUrl = 'localhost:3000';
   constructor (private http: Http) {
 
   }
   getResources(): Observable<Resource[]> {
     return this.http.get(this.baseUrl + '/resources')
                     .map((res: Response) => (res.json().resources || {}))
+                    .catch(this.handleError);
+  }
+  loadFile(resource: Resource): Observable<{}> {
+    return this.http.post(this.baseUrl + `/player/load/${resource.id}`, {})
+                    .map((res: Response) => (res.json() || {}))
+                    .catch(this.handleError);
+  }
+  play(): Observable<{}> {
+    return this.http.post(this.baseUrl + `/player/play`, {})
+                    .map((res: Response) => (res.json() || {}))
+                    .catch(this.handleError);
+  }
+  pause(): Observable<{}> {
+    return this.http.post(this.baseUrl + `/player/pause`, {})
+                    .map((res: Response) => (res.json() || {}))
+                    .catch(this.handleError);
+  }
+  volume(volume: number): Observable<{}> {
+    return this.http.post(this.baseUrl + `/player/volume/${volume}`, {})
+                    .map((res: Response) => (res.json() || {}))
+                    .catch(this.handleError);
+  }
+  exit(): Observable<{}> {
+    return this.http.post(this.baseUrl + `/app/exit`, {})
+                    .map((res: Response) => (res.json() || {}))
                     .catch(this.handleError);
   }
   private handleError (error: Response | any) {

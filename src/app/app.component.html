@@ -1,6 +1,9 @@
 <header>
   <nav class="navbar navbar-full navbar-light bg-faded">
     <a class="navbar-brand" href="#">{{ api.title }}</a>
+    <span class="navbar-text float-xs-right text-muted">
+      {{ io.packet_count }} packets, {{ IO_STATUS[io.io_status] }} to {{ io.status.device || "non" }}
+    </span>
   </nav>
 </header>
 <main>

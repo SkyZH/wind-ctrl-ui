@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { IO_STATUS } from './models';
 import { IOService, ApiService } from './shared';
 
 import '../style/app.scss';
@@ -10,9 +10,10 @@ import '../style/app.scss';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  
-  constructor(private io: IOService, private api: ApiService) {
+  private IO_STATUS: any;
 
+  constructor(private io: IOService, private api: ApiService) {
+    this.IO_STATUS = IO_STATUS;
   }
   ngOnInit() {
     this.io.initialize();

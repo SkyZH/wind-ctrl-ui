@@ -6,6 +6,9 @@ import '@angular/common';
 import '@angular/http';
 import '@angular/router';
 
+import 'lodash';
+import 'moment';
+import 'angular2-moment';
 import 'rxjs';
 import '@angularclass/hmr';
 

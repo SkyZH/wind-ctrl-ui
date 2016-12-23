@@ -2,11 +2,12 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ApiService } from './shared';
-import { IOService } from './shared';
+import { ApiService, IOService } from './shared';
+import { FILTERS } from './pipes';
 
 import { routing } from './app.routing';
 
@@ -17,11 +18,13 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     BrowserModule,
     HttpModule,
     FormsModule,
+    MomentModule,
     routing
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    FILTERS
   ],
   providers: [
     ApiService,
