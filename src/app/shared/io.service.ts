@@ -4,6 +4,7 @@ import { Resource, Log, Status } from '../models';
 import { Observable } from 'rxjs/Observable';
 
 import * as io from 'socket.io-client';
+import * as _ from 'lodash';
 
 @Injectable()
 export class IOService {
@@ -32,6 +33,7 @@ export class IOService {
     this.socket = io(this.api.wsUrl, { transports: ['websocket'] });
     this.io$('log').subscribe(log => {
       this.logs.push(log);
+      this.logs = _.takeRight(this.logs, 500);
       ++this.packet_count;
     });
     this.io$('status').subscribe(status => {
@@ -40,6 +42,7 @@ export class IOService {
     });
     this.io$('connect').subscribe(status => {
       this.io_status = 1;
+      this.logs = [];
     });
     this.io$('disconnect').subscribe(status => {
       this.io_status = 0;

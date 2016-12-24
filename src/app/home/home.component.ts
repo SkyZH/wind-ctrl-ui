@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IOService, ApiService } from '../shared';
 import { Command } from '../models';
+import * as _ from 'lodash';
+
 @Component({
   selector: 'my-home',
   templateUrl: './home.component.html',
@@ -25,8 +27,8 @@ export class HomeComponent implements OnInit {
     command.name = name;
     command.time = Date.now();
     command.status = 0;
-    var $index = this.commands.length;
     this.commands.push(command);
+    this.commands = _.takeRight(this.commands, 500);
     promise.then(result => command.status = result.success ? 1 : 2);
   }
 

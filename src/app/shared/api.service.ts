@@ -6,8 +6,8 @@ import { Resource } from '../models';
 @Injectable()
 export class ApiService {
   title = 'Wind Controller';
-  public baseUrl = '//localhost:3000/api';
-  public wsUrl = 'localhost:3000';
+  public baseUrl = '//efz-drama-pi.local:3000/api';
+  public wsUrl = 'efz-drama-pi.local:3000';
   constructor (private http: Http) {
 
   }

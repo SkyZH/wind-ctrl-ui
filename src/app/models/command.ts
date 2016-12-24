@@ -11,4 +11,9 @@ export class Status {
   volume: number = 100;
   position: number = 0;
   device: string = "non";
+  free_mem: number = 0;
+  total_mem: number = 1;
+  cpus: number[] = [];
+  cpu_avg: number = 0;
+  start_time: number = 0;
 };

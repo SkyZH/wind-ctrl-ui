@@ -25,6 +25,20 @@ body {
     padding: 0.1rem;
     pre {
       margin: 0;
+      white-space: pre-wrap;
     }
   }
+}
+
+.nav-system-status {
+  progress {
+    height: 0.2rem;
+    width: 5rem;
+    display: inline-block;
+    margin: 0;
+  }
+  small {
+    margin: 0 0.1rem;
+  }
+  margin: 0.5rem;
 }

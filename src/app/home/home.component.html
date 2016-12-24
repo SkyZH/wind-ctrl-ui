@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-3">
       <div class="card">
-        <div class="card-header bg-success text-white">Status</div>
+        <div class="card-header text-white" [ngClass]="{ 'bg-info': io.io_status == 1, 'bg-danger': io.io_status == 0 }">Status</div>
         <div class="card-block">
           <div class="row">
             <div class="col-sm-12">
@@ -71,7 +71,7 @@
     </div>
     <div class="col-lg-4">
       <div class="card">
-        <div class="card-header">stdout</div>
+        <div class="card-header"><small>stdout</small></div>
         <table class="table table-striped table-sm wind-console mb-0">
           <tbody>
             <tr *ngFor="let log of (io.logs | logFilter:'wind-ctrl:mpv:stdout')">
@@ -82,7 +82,7 @@
         </table>
       </div>
       <div class="card">
-        <div class="card-header">stderr</div>
+        <div class="card-header"><small>stderr</small></div>
         <table class="table table-striped table-sm wind-console mb-0">
           <tbody>
             <tr *ngFor="let log of (io.logs | logFilter:'wind-ctrl:mpv:stderr')">

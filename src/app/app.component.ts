@@ -18,4 +18,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.io.initialize();
   }
+  private uptime() {
+      return new Date('2000-01-01 0:00').getTime() + Date.now() - this.io.status.start_time;
+  }
 }

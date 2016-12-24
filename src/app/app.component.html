@@ -1,8 +1,12 @@
 <header>
   <nav class="navbar navbar-full navbar-light bg-faded">
     <a class="navbar-brand" href="#">{{ api.title }}</a>
-    <span class="navbar-text float-xs-right text-muted">
-      {{ io.packet_count }} packets, {{ IO_STATUS[io.io_status] }} to {{ io.status.device || "non" }}
+    <div class="nav-item float-xs-right nav-system-status">
+      <small>CPU</small> <progress class="progress progress-info" [value]="io.status.cpu_avg" max="1"></progress>
+      <small>Mem</small> <progress class="progress progress-warning" [value]="1 - io.status.free_mem / io.status.total_mem" max="1"></progress>
+    </div>
+    <span class="navbar-text float-xs-right text-muted mx-1">
+      {{ io.packet_count }} packets, {{ IO_STATUS[io.io_status] }} to {{ io.status.device || "non" }} | {{ uptime() | amDateFormat: 'HH:mm:ss' }}
     </span>
   </nav>
 </header>
