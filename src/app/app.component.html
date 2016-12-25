@@ -2,8 +2,16 @@
   <nav class="navbar navbar-full navbar-light bg-faded">
     <a class="navbar-brand" href="#">{{ api.title }}</a>
     <div class="nav-item float-xs-right nav-system-status">
-      <small>CPU</small> <progress class="progress progress-info" [value]="io.status.cpu_avg" max="1"></progress>
-      <small>Mem</small> <progress class="progress progress-warning" [value]="1 - io.status.free_mem / io.status.total_mem" max="1"></progress>
+      <div class="row">
+        <div class="col-xs-3">
+          <small>Status</small>
+        </div>
+        <div class="col-xs-9">
+          <progress class="progress progress-info" *ngFor="let cpu of io.status.cpus" [value]="cpu" max="1"></progress>
+          <progress class="progress progress-danger" [value]="io.status.cpu_avg" max="1"></progress>
+          <progress class="progress progress-warning" [value]="1 - io.status.free_mem / io.status.total_mem" max="1"></progress>
+        </div>
+      </div>
     </div>
     <span class="navbar-text float-xs-right text-muted mx-1">
       {{ io.packet_count }} packets, {{ IO_STATUS[io.io_status] }} to {{ io.status.device || "non" }} | {{ uptime() | amDateFormat: 'HH:mm:ss' }}
