@@ -6,8 +6,10 @@ import { Resource } from '../models';
 @Injectable()
 export class ApiService {
   title = 'Wind Controller';
-  public baseUrl = '//efz-drama-pi.local:3000/api';
-  public wsUrl = 'efz-drama-pi.local:3000';
+  public baseUrl = '//192.168.1.5:3000/api';
+  public wsUrl = '192.168.1.5:3000';
+  /* public baseUrl = '//efz-drama-pi.local:3000/api';
+  public wsUrl = 'efz-drama-pi.local:3000'; */
   /* public baseUrl = '//localhost:3000/api';
   public wsUrl = 'localhost:3000'; */
   constructor (private http: Http) {
@@ -40,6 +42,11 @@ export class ApiService {
   }
   exit(): Observable<{}> {
     return this.http.post(this.baseUrl + `/app/exit`, {})
+                    .map((res: Response) => (res.json() || {}))
+                    .catch(this.handleError);
+  }
+  kill(): Observable<{}> {
+    return this.http.post(this.baseUrl + `/app/kill`, {})
                     .map((res: Response) => (res.json() || {}))
                     .catch(this.handleError);
   }

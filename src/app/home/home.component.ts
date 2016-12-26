@@ -54,4 +54,7 @@ export class HomeComponent implements OnInit {
   private exit() {
     this.doCommand('exit', this.api.exit().toPromise());
   }
+  private exit() {
+    this.doCommand('kill', this.api.kill().toPromise());
+  }
 }
