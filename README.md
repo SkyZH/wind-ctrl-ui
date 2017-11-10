@@ -2,4 +2,4 @@
 
 Frontend of Wind Remote Controller.
 
-You may use it with [wind-ctrl](https://github.com/SkyZH/wind-ctrl/edit/master/README.md)
+You may use it with [wind-ctrl](https://github.com/SkyZH/wind-ctrl/)
